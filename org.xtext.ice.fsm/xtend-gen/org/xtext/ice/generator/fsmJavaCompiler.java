@@ -13,7 +13,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 @SuppressWarnings("all")
-public class fsmJavaCompiler implements FSMvisitor {
+public class fsmJavaCompiler extends FSMCompiler {
   /**
    * Visitor function for the fsm
    * @param fsm The fsm to visit

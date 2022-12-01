@@ -5,7 +5,7 @@ import fr.ice.fsm.model.State
 import fr.ice.fsm.model.Transition
 import org.eclipse.emf.common.util.EList
 
-class fsmJavaCompiler implements FSMvisitor {
+class fsmJavaCompiler extends FSMCompiler {
  
 	/**
 	 * Visitor function for the fsm

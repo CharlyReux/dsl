@@ -8,6 +8,8 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import fr.ice.fsm.model.Fsm
+import java.util.Scanner
+import javax.sound.sampled.BooleanControl.Type
 
 /**
  * Generates code from your model files on save.
@@ -15,16 +17,29 @@ import fr.ice.fsm.model.Fsm
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class FsmGenerator extends AbstractGenerator {
-FSMvisitor myVisitor
-FsmInterpreter myInterpreter
+	FSMCompiler myCompiler
+	FSMInterpreter myInterpreter
 
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {		
+	String action = ""
+
+	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val myFsm = resource.contents.get(0) as Fsm;
-		myVisitor = new fsmJavaCompiler()
-		myInterpreter = new FsmInterpreter()
-		fsa.generateFile('main.java', myVisitor.compile(myFsm))
-		myInterpreter.interpret(myFsm)
-	}
+		myCompiler = new fsmJavaCompiler()
+		myInterpreter = new FsmScannerInterpreter()
 
+		val mainScanner = new Scanner(System.in)
+
+		switch (action) {
+			case "compile":
+				fsa.generateFile('main.java', myCompiler.compile(myFsm))
+			case "interpret":
+				myInterpreter.interpret(myFsm)
+			case "":
+				action = mainScanner.nextLine()
+			default:
+				print("action not recognized: use either \"interpret\" or \"compile\"")
+		}
+
+	}
 
 }

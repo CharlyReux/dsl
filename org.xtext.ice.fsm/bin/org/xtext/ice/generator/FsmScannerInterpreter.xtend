@@ -9,14 +9,21 @@ import java.util.Scanner
 import fr.ice.fsm.model.Fsm
 import static extension org.xtext.ice.generator.StateAspect.*
 
-class FsmInterpreter {
+import static extension org.xtext.ice.generator.FSMAspect.*
 
-	def interpret(Fsm myFsm) {
+class FsmScannerInterpreter extends FSMInterpreter{
+
+	override interpret(Fsm myFsm) {
+		myFsm.state.forEach [ st |
+			if (st.init) {
+				myFsm.currentState(st)
+			}
+		]
 		val sc = new Scanner(System.in);
 		while (true) {
 			val trigger = sc.nextLine();
-			print(trigger)
-			myFsm.state.forEach[st|st.step(trigger, myFsm)]
+			// print(trigger)
+			myFsm.currentState.step(trigger, myFsm)
 		}
 	}
 
