@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.ice.fsm
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.ice.fsm
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.ice.fsm; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: fr.ice.fsm.model,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.3.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.xtext.ice.scoping,
+ org.xtext.ice.formatting2,
+ org.xtext.ice.parser.antlr,
+ org.xtext.ice.generator,
+ org.xtext.ice.validation,
+ org.xtext.ice.serializer,
+ org.xtext.ice,
+ org.xtext.ice.parser.antlr.internal,
+ org.xtext.ice.services
+Import-Package: org.apache.log4j
