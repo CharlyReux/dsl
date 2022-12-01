@@ -18,3 +18,6 @@ In this part, we had to create two things:
 Here is the architecture that I opted for for my simplified visitor pattern:<br>
 <img src="./Images/classDiagram.png" style="height:400px"><br>
 This architecture makes it easier to create new compilers or new interpreter, as we can see on this diagram I made two concrete classes, one which is used to compile into java, and another which is used to interpret our source language.
+
+## Sirius
+On my own I tried using sirius, I managed to create a graphical interface to create state and to show the init state but I got stuck while trying to create transitions. This is mainly due to my metamodel which is overly simplified and this could be archieved by modifying it and adding a binding from the states to the fsm.

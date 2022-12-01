@@ -1,0 +1,12 @@
+fsm door
+    state opened entry "open door" 
+    state init closed entry "close door"
+    transition open closed -> opened [on]
+    transition close opened -> closed [off]
+    state broken entry "broken door" 
+    transition b1 opened -> broken [warning] 
+    transition b2 closed -> broken [warning]
+    state destroyed entry "door destroyed"
+    transition d1 broken -> destroyed [destroy] 
+    transition r1 destroyed -> opened [repair]
+    transition r2 broken -> opened [repair]

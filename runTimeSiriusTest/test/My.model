@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Fsm xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model="http://www.example.org/model">
+  <state name="inside" entryName="entered" init="true"/>
+  <state name="street" entryName="getInStreet"/>
+  <state name="garden" entryName="GetInGarden"/>
+  <transition name="GoGarden" source="//@state.2" destination="//@state.0" trigger="leaveHouse"/>
+  <transition name="GoInside" source="//@state.0" destination="//@state.2" trigger="getInside"/>
+  <transition name="Gostreet" source="//@state.2" destination="//@state.1" trigger="enterStreet"/>
+  <transition name="GoGarden" source="//@state.1" destination="//@state.2" trigger="EnterGarden"/>
+</model:Fsm>
